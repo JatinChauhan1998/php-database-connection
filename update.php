@@ -5,6 +5,9 @@ $lname=$_POST['lastname'];
 $course=$_POST['course'];
 $email=$_POST['email'];
 
+$img="upload/";
+$img=$img.basename($_FILES['image']['name']);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,12 +19,12 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "UPDATE `sample` SET `firstname` = '$fname', `lastname` = '$lname', `course` = '$course', `email` = '$email' WHERE `sample`.`id` = '$id' ";
+$sql = "UPDATE `sample` SET `firstname` = '$fname', `lastname` = '$lname', `course` = '$course', `email` = '$email', `image` = '$img' WHERE `sample`.`id` = '$id' ";
 
-if (mysqli_query($conn, $sql)) {
+if (mysqli_query($conn, $sql) && (move_uploaded_file($_FILES['image']['tmp_name'],$img))) {
     echo "Record is Updated";
     ?>
-    <a href="display.php">Back<a>
+    <a href="2_display.php">Back<a>
 <?php
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

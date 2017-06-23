@@ -18,10 +18,11 @@ $selectSQL = "SELECT * FROM `sample` WHERE `sample`.`id`='$id'";
     echo 'Retrieval of data from Database Failed - #'.mysqli_errno().': '.mysqli_error();
   }else{
     ?>
-<form action="update.php" method="post">
+<form action="update.php" method="post" enctype="multipart/form-data">
 <table border="1" align ="center">
   <thead>
     <tr>
+      <th>Image</th>
       <th>ID</th>
       <th>First Name</th>
       <th>Last Name</th>
@@ -37,6 +38,7 @@ $selectSQL = "SELECT * FROM `sample` WHERE `sample`.`id`='$id'";
         while( $row = mysqli_fetch_assoc( $selectRes ) ){
           echo "
                 <tr>
+                    <td>";?><input type="file" name="image" value="<?php echo"{$row['photo']}" ?>"> <?php echo "</td>
                     <td>";?><input type="text" name="id" value="<?php echo"{$row['id']}" ?>"> <?php echo "</td>
                     <td>";?><input type="text" name="firstname" value="<?php echo"{$row['firstname']}" ?>"> <?php echo "</td>
                     <td>";?><input type="text" name="lastname" value="<?php echo"{$row['lastname']}" ?>"> <?php echo "</td>
@@ -47,7 +49,7 @@ $selectSQL = "SELECT * FROM `sample` WHERE `sample`.`id`='$id'";
           }
         ?>
     <tr>
-      <td colspan="5" align="center">
+      <td colspan="6" align="center">
         <button><a href="2_display.php">Back<a></button>
         <button><input type="submit" value="Update"></button>
       </td>

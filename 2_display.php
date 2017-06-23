@@ -50,7 +50,9 @@ $selectSQL = 'SELECT * FROM `sample`';
       }
     ?>
     <tr>
-        <td colspan="8" align="center"><button><a href="index.html">Back</a></button></td>
+        <td colspan="8" align="center">
+          <button type="button"><a href="1_insert.html">INSERT VALUES</a></button>
+        </td>
     </tr>
   </tbody>
 </table>

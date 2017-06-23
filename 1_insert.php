@@ -22,7 +22,7 @@ $sql = "INSERT INTO `sample` (`id`, `firstname`, `lastname`, `course`, `email`, 
 if (mysqli_query($conn, $sql) && (move_uploaded_file($_FILES['image']['tmp_name'],$img))) {
     echo "New record created successfully !";
     ?>
-    <a href="1_insert.html">Go Back<a>
+    <a href="2_display.php">Go Back<a>
 <?php
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
